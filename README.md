@@ -6,6 +6,7 @@ SDK do Safe2Pay para a linguagem PHP
 ```bash
 composer require lakow/safe2pay
 ```
+
 ## Pagamento via boleto
 
 ```php
