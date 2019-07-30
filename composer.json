@@ -1,0 +1,25 @@
+{
+    "name": "lakow/safe2pay-php",
+    "type": "library",
+    "description": "SDK do Safe2Pay para a linguagem PHP",
+    "authors": [
+        {
+            "name": "Carlos Alberto Sena",
+            "email": "carlos.al.sena@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Safe2Pay\\": "src/"
+        }
+    },
+    "scripts": {
+        "serve": "php -S 127.0.0.1:8080 -t test test/index.php"
+    },
+    "config": {
+        "process-timeout": 0
+    }
+}
