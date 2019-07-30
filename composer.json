@@ -1,5 +1,5 @@
 {
-    "name": "lakow/safe2pay-php",
+    "name": "lakow/safe2pay",
     "type": "library",
     "description": "SDK do Safe2Pay para a linguagem PHP",
     "authors": [
