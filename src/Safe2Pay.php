@@ -66,6 +66,7 @@ class Safe2Pay
     public function isSandbox(bool $sandbox = true)
     {
         $this->sandbox = $sandbox;
+        return $this;
     }
 
     /**
