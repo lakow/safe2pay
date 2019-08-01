@@ -1,11 +1,14 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set("display_errors", 1); 
+
 require __DIR__ . '/../vendor/autoload.php';
 
 use Safe2Pay\Safe2Pay;
 use Safe2Pay\PaymentType;
 
-$token = 'XXXXXXXXXXXXXXXXXXXXXXX';
+$token = '00CB173A9AB442BDA92EC1B8DEE1EC0C';
 
 $safe2Pay = new Safe2Pay($token);
 $safe2Pay->isSandbox(true);
@@ -41,4 +44,14 @@ $orders = $safe2Pay->orders()
 
 
 echo '<pre>';
-print_r($orders);
+
+echo 'Response: ';
+print_r($orders->getResponse());
+echo '<br>';
+
+echo 'Has Error: ';
+print_r($orders->hasError());
+echo '<br>';
+
+echo 'Error: ';
+print_r($orders->errorMessage());

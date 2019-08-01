@@ -8,6 +8,8 @@ use GuzzleHttp\Psr7\Request;
 
 trait TransactionTrait
 {
+    protected $response = [];
+
     public function execute()
     {
         $client = new Client(['base_uri' => $this->safe2pay->getEndpoint()]);
@@ -20,7 +22,8 @@ trait TransactionTrait
             ]
         ]);
 
-        return $response->getBody()->getContents();
+        $this->response = json_decode($response->getBody(), true);
+        return $this;
     }
 
     public function getMethod()
@@ -31,5 +34,24 @@ trait TransactionTrait
     public function getUrl()
     {
         return sprintf('/%s/%s', $this->safe2pay->getApiVersion(), self::PATH);
+    }
+
+    public function getResponse()
+    {
+        return $this->response;
+    }
+
+    public function hasError()
+    {
+        if (array_key_exists('HasError', $this->response)) {
+            return (bool) $this->response['HasError'];
+        }
+    }
+
+    public function errorMessage()
+    {
+        if ($this->hasError() && array_key_exists('Error', $this->response)) {
+            return $this->response['Error'];
+        }
     }
 }
