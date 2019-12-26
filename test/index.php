@@ -29,21 +29,17 @@ $customer = $safe2Pay->customer()
     ]);
 
 $orders = $safe2Pay->orders()
-    ->addItem('001', 'Camiseta', '25.00')
-    ->addItem('002', 'Calça', '25.00')
+    ->addItem('001', 'Item teste', '1411.71')
     ->setCustomer($customer)
     ->payment(
         PaymentType::BANK_SLIP, [
             'duo_date' => (new \DateTime('now'))->format('d/m/Y'), 
             'instruction' => 'Instrução de Exemplo',
-            'messages' => ['teste 1', 'teste 2']
+            'messages' => ['Mensagem de teste']
         ]
     )
     ->notification('https://www.site.com.br/callback')
     ->execute();
-
-
-echo '<pre>';
 
 echo 'Response: ';
 print_r($orders->getResponse());

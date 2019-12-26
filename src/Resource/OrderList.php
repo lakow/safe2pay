@@ -87,8 +87,8 @@ class OrderList extends Safe2PayResource
      */
     public function addItem($code, $description, $cost, $amount = 1)
     {
-        $amount = number_format($amount, 2);
-        $cost = number_format($cost, 2);
+        $amount = number_format($amount, 2, '.', '');
+        $cost = number_format($cost, 2, '.', '');
         $data = compact('code', 'description', 'cost', 'amount');
         $order = (new Order($this->safe2pay))->create($data);
         array_push($this->orders, $order);

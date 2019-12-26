@@ -106,7 +106,7 @@ class Validate
      */
     protected function email()
     {
-        if (!is_null($this->value) && !filter_var($this->value, FILTER_VALIDATE_EMAIL)) {
+        if ($this->value !== "" && !filter_var($this->value, FILTER_VALIDATE_EMAIL)) {
             throw new ValidateException("{$this->value} is not valid email."); 
         }
     }
